@@ -4,7 +4,7 @@
   "description": "trabajar con asincronimos en JavaScript",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "callback": "node src/callback/index.js"
   },
   "keywords": [
     "callbacks",
@@ -13,5 +13,5 @@
     "away"
   ],
   "author": "MIT",
-  "license": "ISC", "MIT"
+  "license": "ISC"
 }
