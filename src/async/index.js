@@ -19,7 +19,7 @@ console.log('After');
 const anotherFuncion = async () => {
   try {
     const something = await doSomethingAsync()
-    console.log(something);
+    console.log(`${something} segundo `);
   } catch (error) {
     console.error(error)
   }
