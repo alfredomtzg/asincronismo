@@ -18,10 +18,10 @@ somethingWillHappen()
 
 const somethingHappen2 = () => {
   return new Promise((resolve, reject) => {
-    if (false) {
+    if (true) {
       setTimeout(() => {
         resolve ('x2')
-      }, 1000);
+      }, 2000);
     } else {
       const error = new Error('tampoco bro')
       reject (error);
