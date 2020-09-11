@@ -1,25 +1,23 @@
 let XMLHttpRequest = require('XMLHttpRequest').XMLHttpRequest;
 
-function fetchData(url_api, callback) {
+const fetchData =  (url_api) => {
+  return new Promise((resolve,reject) => {
+    const xhttp = new XMLHttpRequest();
+    // abrir http
+    xhttp.open('GET', url_api, true);
+    // escuchar lo que va a hacer ésta petición con una función que 
+    // va a recibir un evento
+    xhttp.onreadystatechange =  (() => {
+      // validamos la informacion con if
+      if(xhttp.readyState === 4){
+        (xhttp.status === 200)
+          ? resolve(JSON.parse(xhttp.responseText))
+          : reject (new Error('Error' + url_api))
 
-  let xhttp = new XMLHttpRequest();
-  // abrir http
-  xhttp.open('GET', url_api, true);
-  // escuchar lo que va a hacer ésta petición con una función que 
-  // va a recibir un evento
-  xhttp.onreadystatechange = function (event) {
-    // validamos la informacion con if
-    if(xhttp.readyState === 4){
-      // igualdad a que se resolvió con status 200
-      if(xhttp.status === 200) {
-        // pasamos el callback y manejamos primero el error
-        callback(null, JSON.parse(xhttp.responseText));
-      } else {
-        // manejamos el error
-        const error = new Error('Error' + url_api);
-        return callback(error, null);
       }
-    }
-  }
-  xhttp.send();
+    })
+    xhttp.send();
+  });
 }
+
+module.exports = fetchData;
